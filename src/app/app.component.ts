@@ -24,7 +24,7 @@ export class AppComponent  {
   ngOnInit(){
     this.logger.debug("初始化");
   }
-  childChange(message){
+  childChange(message: string){
     this.name = message;
   }
 }

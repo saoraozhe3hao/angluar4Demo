@@ -6,8 +6,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class DetailComponent {
+  id: string;
   constructor(private route: ActivatedRoute) {}
   ngOnInit() {
-    this.route.params.subscribe((params) => this.id = params.id);
+    this.route.params.subscribe((params: any) => this.id = params.id);
   }
 }

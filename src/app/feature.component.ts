@@ -3,7 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'feature-one',
   // 外联模板
-  templateUrl: './feature.component.html'
+  template: require('./template/feature.component.html')
 })
 
 export class FeatureComponent  {
@@ -11,6 +11,7 @@ export class FeatureComponent  {
   @Input() message: string;
   // 输出装饰器，声明本数据可以发出的事件
   @Output() change = new EventEmitter();
+  show : boolean;
   constructor(){
     console.log("constructor");
   }

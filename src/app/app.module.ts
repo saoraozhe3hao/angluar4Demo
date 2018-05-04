@@ -8,6 +8,7 @@ import { AppComponent }  from './app.component';
 import { FeatureComponent } from './feature.component';
 import { ListComponent } from './list.component';
 import { DetailComponent } from './detail.component';
+require("./less/app.less")
 
 const ROUTES: Routes = [
   { path: '', component: ListComponent }, // 首页包含的组件，嵌套在根模块之下
