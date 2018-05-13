@@ -72,7 +72,32 @@ module.exports = {
                 test: /\.json$/,
                 loader: 'json-loader'
             }
-        ]
+      ]
+    },
+    optimization: {
+      // 模块拆分提取规则
+      splitChunks: {
+        /* 同时满足以下条件才拆分成单独文件 */
+        chunks: 'all', // 引用类型，all 表示 initial引用 + async引用
+        minSize: 30000, // 压缩前体积大于30000B
+        minChunks: 1,  // 引用数量大于 1
+        maxAsyncRequests: 5, // 异步引用数量小于5
+        maxInitialRequests: 3, // 初始引用数量小于3
+        /**********************************/
+        name: true,
+        // 缓存组
+        cacheGroups: {
+          vendors: {
+            name: 'vendors',
+            priority: 10, // 提取到本组的优先级
+            /* 将符合以下条件的模块提取到组 */
+            chunks: "all",
+            test: /node_modules\\/,
+            minSize: 30000,
+            minChunks: 1
+          }
+        }
+      }
     },
     // 额外插件
     plugins: [
@@ -86,7 +111,6 @@ module.exports = {
             template: './src/index.html',
             //指定文件名
             filename: 'index.html'
-            //inject: 'body' // js标签插入位置
         })
     ],
     // 配置 webpack-dev-server
